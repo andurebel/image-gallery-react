@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ImageCard from "./components/ImageCard";
+import SearchImage from "./components/SearchImage";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -21,6 +22,14 @@ function App() {
   return (
     <>
       <div className="container mx-auto">
+        <SearchImage searchText={(text) => setTerm(text)} />
+
+        {!isLoading && images.length === 0 && (
+          <h1 className="text-4xl mx-auto text-center mt-32  py-10 rounded-xl opacity-80 shadow-lg">
+            No images found, please try again
+          </h1>
+        )}
+
         {isLoading ? (
           <div className="text-4xl mx-auto text-center mt-32">
             Loading data, please wait...
