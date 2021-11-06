@@ -9,8 +9,11 @@ function App() {
   const [term, setTerm] = useState("");
 
   useEffect(() => {
-    const API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
-    fetch(`https://pixabay.com/api/?key=${API_KEY}&q=${term}&image_type=photo`)
+    //const API_KEY = process.env.REACT_APP_PIXABAY_API_KEY;
+    const { REACT_APP_PIXABAY_API_KEY } = process.env;
+    fetch(
+      `https://pixabay.com/api/?key=${REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo`,
+    )
       .then((response) => {
         return response.json();
       })
